@@ -1,0 +1,176 @@
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.login-window {
+  background: #f0f0f0;
+  border: 2px solid #333;
+  border-radius: 8px;
+  width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-header {
+  background: linear-gradient(to bottom, #e8e8e8, #d0d0d0);
+  border-bottom: 1px solid #999;
+  padding: 8px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px 6px 0 0;
+}
+
+.login-title {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.window-control {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #999;
+  background: linear-gradient(to bottom, #f8f8f8, #e0e0e0);
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.window-control:hover {
+  background: linear-gradient(to bottom, #fff, #e8e8e8);
+}
+
+.window-control.close:hover {
+  background: #ff4444;
+  color: white;
+}
+
+.login-content {
+  padding: 30px;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.login-form {
+  flex: 1;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group label {
+  width: 80px;
+  font-weight: bold;
+  color: #333;
+  text-align: right;
+}
+
+.form-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px inset #ddd;
+  background: white;
+  font-size: 14px;
+  min-width: 200px;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.btn-ingresar,
+.btn-salir {
+  padding: 8px 20px;
+  border: 2px outset #ddd;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.btn-ingresar {
+  background: linear-gradient(to bottom, #ff6b6b, #cc5555);
+  color: white;
+}
+
+.btn-ingresar:hover {
+  background: linear-gradient(to bottom, #ff7777, #dd6666);
+}
+
+.btn-ingresar:active {
+  border: 2px inset #ddd;
+}
+
+.btn-salir {
+  background: linear-gradient(to bottom, #ff6b6b, #cc5555);
+  color: white;
+}
+
+.btn-salir:hover {
+  background: linear-gradient(to bottom, #ff7777, #dd6666);
+}
+
+.btn-salir:active {
+  border: 2px inset #ddd;
+}
+
+.login-icon {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-icon {
+  font-size: 60px;
+  position: relative;
+  z-index: 2;
+}
+
+.lock-icon {
+  font-size: 40px;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px solid #ddd;
+}

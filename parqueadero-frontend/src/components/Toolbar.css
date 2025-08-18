@@ -1,0 +1,174 @@
+.toolbar {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #d0d0d0;
+  padding: 8px 16px;
+  gap: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.toolbar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  min-width: 80px;
+}
+
+.toolbar-item:hover {
+  background-color: #e0e0e0;
+}
+
+.toolbar-item:active {
+  background-color: #d0d0d0;
+}
+
+.toolbar-icon {
+  font-size: 24px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.toolbar-label {
+  font-size: 11px;
+  color: #333;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.2;
+  max-width: 70px;
+  word-wrap: break-word;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .toolbar {
+    flex-wrap: wrap;
+    padding: 6px 8px;
+  }
+
+  .toolbar-item {
+    min-width: 60px;
+    padding: 6px 8px;
+  }
+
+  .toolbar-icon {
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .toolbar-label {
+    font-size: 10px;
+    max-width: 60px;
+  }
+}
+
+/* Adding dropdown menu styles for Archivo menu */
+.toolbar-item-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 120px;
+  margin-top: 2px;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #333;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-item:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.dropdown-item:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.dropdown-icon {
+  font-size: 16px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Adding styles for database menu with submenus */
+.database-menu {
+  min-width: 160px;
+}
+
+.has-submenu {
+  position: relative;
+  justify-content: space-between;
+}
+
+.submenu-arrow {
+  font-size: 12px;
+  color: #666;
+  margin-left: auto;
+}
+
+.submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  min-width: 180px;
+  margin-left: 2px;
+}
+
+.submenu .dropdown-item {
+  padding: 8px 12px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.submenu .dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.submenu .dropdown-item:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.submenu .dropdown-item:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+/* Adjusting dropdown icons for better alignment */
+.submenu .dropdown-icon {
+  font-size: 14px;
+  width: 18px;
+}
