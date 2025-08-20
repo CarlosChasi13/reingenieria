@@ -22,6 +22,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ onLogout, onMenuAction }) => {
   const [showDatabaseMenu, setShowDatabaseMenu] = useState(false)
   const [showMoreMenu, setShowMoreMenu] = useState(false)
   const [showCajaMenu, setShowCajaMenu] = useState(false)
+  const [showConsultasMenu, setShowConsultasMenu] = useState(false)
   const [showClientesSubmenu, setShowClientesSubmenu] = useState(false)
   const [showUsuariosSubmenu, setShowUsuariosSubmenu] = useState(false)
   const [showEspacioSubmenu, setShowEspacioSubmenu] = useState(false)
@@ -30,13 +31,14 @@ const Toolbar: React.FC<ToolbarProps> = ({ onLogout, onMenuAction }) => {
   const databaseMenuRef = useRef<HTMLDivElement>(null)
   const moreMenuRef = useRef<HTMLDivElement>(null)
   const cajaMenuRef = useRef<HTMLDivElement>(null)
+  const consultasMenuRef = useRef<HTMLDivElement>(null)
 
   const toolbarItems: ToolbarItem[] = [
     { id: "archivo", icon: "📁", label: "Archivo", hasDropdown: true },
     { id: "database", icon: "🗄️", label: "Base de Datos", hasDropdown: true },
     { id: "mas", icon: "🔧", label: "Mas..." },
     { id: "ventas", icon: "💰", label: "Ventas/POS" },
-    { id: "consultas", icon: "🔍", label: "Consultas Ventas" },
+    { id: "consultas", icon: "🔍", label: "Consultas Ventas", hasDropdown: true },
     { id: "vaciar", icon: "🗑️", label: "Vaciar base de datos" },
     { id: "caja", icon: "💼", label: "Caja", hasDropdown: true },
   ]
@@ -58,6 +60,9 @@ const Toolbar: React.FC<ToolbarProps> = ({ onLogout, onMenuAction }) => {
       if (cajaMenuRef.current && !cajaMenuRef.current.contains(event.target as Node)) {
         setShowCajaMenu(false)
       }
+      if (consultasMenuRef.current && !consultasMenuRef.current.contains(event.target as Node)) {
+        setShowConsultasMenu(false)
+      }
     }
 
     document.addEventListener("mousedown", handleClickOutside)
@@ -72,6 +77,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ onLogout, onMenuAction }) => {
       setShowDatabaseMenu(false)
       setShowMoreMenu(false)
       setShowCajaMenu(false)
+      setShowConsultasMenu(false)
     } else if (item.id === "database") {
       setShowDatabaseMenu(!showDatabaseMenu)
       setShowArchivoMenu(false)
@@ -80,6 +86,7 @@ const Toolbar: React.FC<ToolbarProps> = ({ onLogout, onMenuAction }) => {
       setShowUsuariosSubmenu(false)
       setShowEspacioSubmenu(false)
       setShowCajaMenu(false)
+      setShowConsultasMenu(false)
     } else if (item.id === "mas") {
       setShowMoreMenu(!showMoreMenu)
       setShowArchivoMenu(false)
@@ -88,11 +95,22 @@ const Toolbar: React.FC<ToolbarProps> = ({ onLogout, onMenuAction }) => {
       setShowUsuariosSubmenu(false)
       setShowEspacioSubmenu(false)
       setShowCajaMenu(false)
+      setShowConsultasMenu(false)
     } else if (item.id === "caja") {
       setShowCajaMenu(!showCajaMenu)
       setShowArchivoMenu(false)
       setShowDatabaseMenu(false)
       setShowMoreMenu(false)
+      setShowClientesSubmenu(false)
+      setShowUsuariosSubmenu(false)
+      setShowEspacioSubmenu(false)
+      setShowConsultasMenu(false)
+    } else if (item.id === "consultas") {
+      setShowConsultasMenu(!showConsultasMenu)
+      setShowArchivoMenu(false)
+      setShowDatabaseMenu(false)
+      setShowMoreMenu(false)
+      setShowCajaMenu(false)
       setShowClientesSubmenu(false)
       setShowUsuariosSubmenu(false)
       setShowEspacioSubmenu(false)
@@ -138,6 +156,8 @@ const Toolbar: React.FC<ToolbarProps> = ({ onLogout, onMenuAction }) => {
         "agregar-cliente": "add-client",
         "modificar-cliente": "modify-client",
         "consultar-clientes": "consult-client",
+        "agregar-usuario": "add-user",
+        "modificar-usuario": "modify-user",
         "cambiar-password": "change-password",
         "agregar-espacio": "add-space",
         "modificar-espacio": "modify-space",
@@ -172,6 +192,14 @@ const Toolbar: React.FC<ToolbarProps> = ({ onLogout, onMenuAction }) => {
     setShowCajaMenu(false)
   }
 
+  const handleConsultasMenuAction = (action: string) => {
+    console.log(`Consultas action: ${action}`)
+    if (onMenuAction) {
+      onMenuAction(action)
+    }
+    setShowConsultasMenu(false)
+  }
+
   return (
     <div className="toolbar">
       {toolbarItems.map((item) => (
@@ -187,7 +215,9 @@ const Toolbar: React.FC<ToolbarProps> = ({ onLogout, onMenuAction }) => {
                   ? moreMenuRef
                   : item.id === "caja"
                     ? cajaMenuRef
-                    : null
+                    : item.id === "consultas"
+                      ? consultasMenuRef
+                      : null
           }
         >
           <div className="toolbar-item" onClick={() => handleItemClick(item)}>
@@ -295,6 +325,15 @@ const Toolbar: React.FC<ToolbarProps> = ({ onLogout, onMenuAction }) => {
               <div className="dropdown-item" onClick={() => handleCajaMenuAction("cash-register-list")}>
                 <span className="dropdown-icon">📋</span>
                 <span>Lista Cajas</span>
+              </div>
+            </div>
+          )}
+
+          {item.id === "consultas" && showConsultasMenu && (
+            <div className="dropdown-menu">
+              <div className="dropdown-item" onClick={() => handleConsultasMenuAction("consulta-ventas")}>
+                <span className="dropdown-icon">📊</span>
+                <span>Ventas</span>
               </div>
             </div>
           )}

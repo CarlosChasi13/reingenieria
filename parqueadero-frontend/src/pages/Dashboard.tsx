@@ -8,12 +8,15 @@ import AddClientModal from "../components/modals/AddClientModal"
 import ModifyClientModal from "../components/modals/ModifyClientModal"
 import ConsultClientModal from "../components/modals/ConsultClientModal"
 import ChangePasswordModal from "../components/modals/ChangePasswordModal"
+import AddUserModal from "../components/modals/AddUserModal"
+import ModifyUserModal from "../components/modals/ModifyUserModal"
 import AddSpaceModal from "../components/modals/AddSpaceModal"
 import ModifySpaceModal from "../components/modals/ModifySpaceModal"
 import FreeSpaceModal from "../components/modals/FreeSpaceModal"
 import ConfigurationModal from "../components/modals/ConfigurationModal"
 import OpenCashRegisterModal from "../components/modals/OpenCashRegisterModal"
 import CashRegisterListModal from "../components/modals/CashRegisterListModal"
+import ConsultaSalesModal from "../components/modals/ConsultaSalesModal"
 import SalesScreen from "../components/SaleScreen"
 import "./Dashboard.css"
 
@@ -79,10 +82,13 @@ const Dashboard: React.FC<DashboardProps> = ({ onLogout }) => {
       <ModifyClientModal isOpen={activeModal === "modify-client"} onClose={closeModal} />
       <ConsultClientModal isOpen={activeModal === "consult-client"} onClose={closeModal} />
       <ChangePasswordModal isOpen={activeModal === "change-password"} onClose={closeModal} />
+      <AddUserModal isOpen={activeModal === "add-user"} onClose={closeModal} />
+      <ModifyUserModal isOpen={activeModal === "modify-user"} onClose={closeModal} />
       <AddSpaceModal isOpen={activeModal === "add-space"} onClose={closeModal} />
       <ModifySpaceModal isOpen={activeModal === "modify-space"} onClose={closeModal} />
       <FreeSpaceModal isOpen={activeModal === "free-space"} onClose={closeModal} />
       <ConfigurationModal isOpen={activeModal === "configuration"} onClose={closeModal} />
+      <ConsultaSalesModal isOpen={activeModal === "consulta-ventas"} onClose={closeModal} />
     </div>
   )
 }
